@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Music Player</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #121212;
+    font-family: Arial, sans-serif;
+}
+
+.player {
+    width: 300px;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    color: white;
+}
+
+.player img {
+    width: 100%;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+.player h3 {
+    margin: 8px 0;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+}
+
+button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #1db954;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="player">
+    <img id="cover" src="image/song1.jpg" alt="cover">
+    <h3 id="title">Song 1</h3>
+
+    <audio id="audio" controls></audio>
+
+    <div class="controls">
+        <button onclick="prev()">⏮</button>
+        <button onclick="next()">⏭</button>
+    </div>
+</div>
+
+<script>
+const songs = [
+    {
+        title: "Phone Na Hello",
+        src: "songs/Phone Na Hello.mp3",
+        img: "image/song1.jpg"
+    },
+    {
+        title: "Oru-Pere-Varalaaru",
+        src: "songs/Oru-Pere-Varalaaru.mp3",
+        img: "image/song2.jpg"
+    }
+];
+
+let index = 0;
+
+const audio = document.getElementById("audio");
+const cover = document.getElementById("cover");
+const title = document.getElementById("title");
+
+function loadSong() {
+    audio.src = songs[index].src;
+    cover.src = songs[index].img;
+    title.textContent = songs[index].title;
+}
+
+function next() {
+    index = (index + 1) % songs.length;
+    loadSong();
+    audio.play();
+}
+
+function prev() {
+    index = (index - 1 + songs.length) % songs.length;
+    loadSong();
+    audio.play();
+}
+
+audio.addEventListener("ended", next);
+
+// Load first song
+loadSong();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+body {
+    background: #121212;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 320px;
+}
+
+.card {
+    background: #1e1e1e;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+audio {
+    width: 100%;
+    margin-top: 8px;
+}
